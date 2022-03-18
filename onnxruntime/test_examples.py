@@ -117,29 +117,29 @@ class ExamplesTests(TestCasePlus):
             self.assertLess(result["eval_loss"], 0.5)
 
     # Question Answering Tests
-    def test_run_qa(self):
-        stream_handler = logging.StreamHandler(sys.stdout)
-        logger.addHandler(stream_handler)
+    # def test_run_qa(self):
+    #     stream_handler = logging.StreamHandler(sys.stdout)
+    #     logger.addHandler(stream_handler)
 
-        tmp_dir = self.get_auto_remove_tmp_dir()
-        testargs = f"""
-            run_qa.py
-            --model_name_or_path bert-base-uncased
-            --dataset_name squad
-            --do_train
-            --do_eval
-            --output_dir {tmp_dir}
-            --overwrite_output_dir
-            --learning_rate=1e-5
-            --per_device_train_batch_size=16
-            --per_device_eval_batch_size=16
-        """.split()
+    #     tmp_dir = self.get_auto_remove_tmp_dir()
+    #     testargs = f"""
+    #         run_qa.py
+    #         --model_name_or_path bert-base-uncased
+    #         --dataset_name squad
+    #         --do_train
+    #         --do_eval
+    #         --output_dir {tmp_dir}
+    #         --overwrite_output_dir
+    #         --learning_rate=1e-5
+    #         --per_device_train_batch_size=16
+    #         --per_device_eval_batch_size=16
+    #     """.split()
 
-        with patch.object(sys, "argv", testargs):
-            run_qa.main()
-            result = get_results(tmp_dir)
-            self.assertGreaterEqual(result["eval_f1"], 30)
-            self.assertGreaterEqual(result["eval_exact"], 30)
+    #     with patch.object(sys, "argv", testargs):
+    #         run_qa.main()
+    #         result = get_results(tmp_dir)
+    #         self.assertGreaterEqual(result["eval_f1"], 30)
+    #         self.assertGreaterEqual(result["eval_exact"], 30)
 
 
 if __name__ == "__main__":
