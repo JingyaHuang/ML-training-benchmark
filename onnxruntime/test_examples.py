@@ -80,6 +80,7 @@ class ExamplesTests(TestCasePlus):
             --learning_rate=1e-5
             --per_device_train_batch_size=16
             --per_device_eval_batch_size=16
+            --max_seq_length=128
             """.split()
 
         with patch.object(sys, "argv", testargs):
@@ -104,7 +105,7 @@ class ExamplesTests(TestCasePlus):
             --do_eval
             --output_dir {tmp_dir}
             --overwrite_output_dir
-            --learning_rate=1e-5
+            --learning_rate=2e-4
             --per_device_train_batch_size=16
             --per_device_eval_batch_size=16
             --num_train_epochs={epochs}
