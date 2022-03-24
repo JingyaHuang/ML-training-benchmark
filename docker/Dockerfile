@@ -30,7 +30,7 @@ RUN pip install torch-ort
 RUN python -m torch_ort.configure
 RUN pip install coloredlogs transformers>=4.15.0 datasets>=1.18.0
 RUN pip install scipy sklearn
-RUN pip install sentencepiece seqeval
+RUN pip install sentencepiece seqeval sacrebleu
 
 
 CMD ["/bin/bash"]
